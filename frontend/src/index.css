@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #0a0a0f;
+  color: #f5f1e8;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4ff3a33;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ff3a66;
+}
+
+/* Texto con gradiente animado */
+.text-gradient {
+  background: linear-gradient(90deg, #d4ff3a, #00f0ff, #ff2dcc, #d4ff3a);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-x 8s ease infinite;
+}
+
+/* Fondo con grid */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(212, 255, 58, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 255, 58, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Fondo con ruido */
+.bg-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Glow effects */
+.glow-lime {
+  box-shadow: 0 0 30px rgba(212, 255, 58, 0.4), 0 0 60px rgba(212, 255, 58, 0.2);
+}
+.glow-cyan {
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4), 0 0 60px rgba(0, 240, 255, 0.2);
+}
+.glow-magenta {
+  box-shadow: 0 0 30px rgba(255, 45, 204, 0.4), 0 0 60px rgba(255, 45, 204, 0.2);
+}
+
+/* Botones brutalistas */
+.btn-brutal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 2px solid #f5f1e8;
+  background: #f5f1e8;
+  color: #0a0a0f;
+  padding: 0.85rem 1.5rem;
+  border-radius: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 4px 4px 0 #d4ff3a;
+  cursor: pointer;
+}
+
+.btn-brutal:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #d4ff3a;
+}
+.btn-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #d4ff3a;
+}
+
+.btn-brutal-cyan {
+  box-shadow: 4px 4px 0 #00f0ff;
+}
+.btn-brutal-cyan:hover {
+  box-shadow: 6px 6px 0 #00f0ff;
+}
+.btn-brutal-cyan:active {
+  box-shadow: 1px 1px 0 #00f0ff;
+}
+
+.btn-brutal-magenta {
+  box-shadow: 4px 4px 0 #ff2dcc;
+}
+.btn-brutal-magenta:hover {
+  box-shadow: 6px 6px 0 #ff2dcc;
+}
+.btn-brutal-magenta:active {
+  box-shadow: 1px 1px 0 #ff2dcc;
+}
+
+/* Card brutalista */
+.card-brutal {
+  background: #14141c;
+  border: 2px solid #f5f1e8;
+  box-shadow: 8px 8px 0 #d4ff3a;
+  position: relative;
+}
+
+/* Indicador de "live" */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #ff2dcc;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 10px #ff2dcc;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Efecto typewriter */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #d4ff3a;
+  animation: typing 3s steps(40), blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: #d4ff3a }
+}
+
+/* Anima los elementos al cargar la pagina */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.6s ease forwards;
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto skeleton para cargas */
+.skeleton {
+  background: linear-gradient(90deg, #1a1a24 25%, #2a2a34 50%, #1a1a24 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Responsive: en mobile, ajusta sombras */
+@media (max-width: 640px) {
+  .card-brutal {
+    box-shadow: 4px 4px 0 #d4ff3a;
+  }
+  .btn-brutal {
+    box-shadow: 3px 3px 0 #d4ff3a;
+  }
+}
