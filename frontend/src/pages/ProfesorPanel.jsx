@@ -91,23 +91,23 @@ export default function ProfesorPanel() {
     <div className="px-4 py-6 sm:py-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="mb-6">
-        <div className="flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex items-center gap-3">
             <img
               src="/unicen-logo.jpg"
               alt="UNICEN"
-              className="w-14 h-14 object-contain bg-bone p-1"
+              className="w-10 h-10 sm:w-14 sm:h-14 object-contain bg-bone p-1 shrink-0"
             />
-            <div>
-              <div className="font-mono text-[10px] tracking-widest text-neon-cyan mb-1">
+            <div className="min-w-0">
+              <div className="font-mono text-[9px] sm:text-[10px] tracking-widest text-neon-cyan mb-1 truncate">
                 UNICEN · PANEL DEL PROFESOR · MODO PRESENTACIÓN
               </div>
-              <h1 className="font-display text-3xl sm:text-4xl font-bold">
+              <h1 className="font-display text-2xl sm:text-4xl font-bold">
                 Sala de <span className="text-neon-cyan">control</span>
               </h1>
             </div>
           </div>
-          <div className="font-mono text-xs flex items-center gap-3 flex-wrap">
+          <div className="font-mono text-xs flex items-center gap-2 sm:gap-3 flex-wrap">
             <span className="text-bone/60">
               <span className="text-neon-lime font-bold">{ranking.totalEstudiantes}</span> conectados
             </span>
@@ -316,7 +316,7 @@ function PestaniaTerminal({ actividad, animandoEventos, terminalRef }) {
           {/* Contenido de la terminal */}
           <div
             ref={terminalRef}
-            className="p-3 sm:p-4 font-mono text-xs leading-relaxed text-neon-lime min-h-[500px] max-h-[600px] overflow-y-auto"
+            className="p-3 sm:p-4 font-mono text-xs leading-relaxed text-neon-lime min-h-[300px] sm:min-h-[500px] max-h-[400px] sm:max-h-[600px] overflow-y-auto"
           >
             {/* Header animado */}
             <div className="mb-3 text-bone/60">

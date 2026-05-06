@@ -97,11 +97,11 @@ export default function EntrenaIA() {
           <span className="font-mono text-[10px] text-bone/50">TOCA PARA ENTRENAR</span>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {/* Perros disponibles */}
           <div>
             <div className="font-mono text-xs text-neon-lime mb-2">🐕 PERROS</div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5 sm:gap-2">
               {ejemplosClasificador.perro.map(e => {
                 const usado = entrenadosPerro.find(x => x.id === e.id);
                 return (
@@ -109,7 +109,7 @@ export default function EntrenaIA() {
                     key={e.id}
                     onClick={() => agregar('perro', e)}
                     disabled={usado}
-                    className={`aspect-square text-3xl border-2 transition-all ${
+                    className={`aspect-square text-2xl sm:text-3xl border-2 transition-all min-h-[44px] ${
                       usado
                         ? 'border-neon-lime bg-neon-lime/20 opacity-50'
                         : 'border-bone/30 hover:border-neon-lime hover:scale-110'
@@ -125,7 +125,7 @@ export default function EntrenaIA() {
           {/* Gatos disponibles */}
           <div>
             <div className="font-mono text-xs text-neon-magenta mb-2">🐈 GATOS</div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5 sm:gap-2">
               {ejemplosClasificador.gato.map(e => {
                 const usado = entrenadosGato.find(x => x.id === e.id);
                 return (
@@ -133,7 +133,7 @@ export default function EntrenaIA() {
                     key={e.id}
                     onClick={() => agregar('gato', e)}
                     disabled={usado}
-                    className={`aspect-square text-3xl border-2 transition-all ${
+                    className={`aspect-square text-2xl sm:text-3xl border-2 transition-all min-h-[44px] ${
                       usado
                         ? 'border-neon-magenta bg-neon-magenta/20 opacity-50'
                         : 'border-bone/30 hover:border-neon-magenta hover:scale-110'

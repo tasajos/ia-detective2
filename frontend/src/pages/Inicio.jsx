@@ -198,8 +198,8 @@ export default function Inicio() {
             className="mt-12 pt-8 border-t border-bone/10 flex flex-wrap items-center justify-between gap-4"
           >
             <div className="flex items-center gap-3">
-              <img src="/unicen-logo.jpg" alt="UNICEN" className="w-12 h-12 object-contain bg-bone p-1" />
-              <div className="font-mono text-xs text-bone/40">
+              <img src="/unicen-logo.jpg" alt="UNICEN" className="w-10 h-10 sm:w-12 sm:h-12 object-contain bg-bone p-1 shrink-0" />
+              <div className="font-mono text-[10px] sm:text-xs text-bone/40">
                 <div>UNIVERSIDAD CENTRAL · UNICEN</div>
                 <div className="mt-1">CARRERA DE IA · CHARLA 2026</div>
               </div>

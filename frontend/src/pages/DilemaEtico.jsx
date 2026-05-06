@@ -124,7 +124,7 @@ export default function DilemaEtico() {
 
       {/* Botones de voto */}
       {!voto && (
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
           {[
             { id: 'si', label: 'SÍ', emoji: '✅', color: 'lime' },
             { id: 'depende', label: 'DEPENDE', emoji: '🤔', color: 'cyan' },
@@ -134,14 +134,17 @@ export default function DilemaEtico() {
               key={op.id}
               whileTap={{ scale: 0.95 }}
               onClick={() => votar(op.id)}
-              className={`card-brutal py-5 text-center hover:bg-bone/5 transition-colors`}
+              className="card-brutal py-4 sm:py-5 text-center hover:bg-bone/5 transition-colors"
               style={{ boxShadow: `4px 4px 0 ${
                 op.color === 'lime' ? '#d4ff3a' :
                 op.color === 'cyan' ? '#00f0ff' : '#ff2dcc'
               }` }}
             >
-              <div className="text-3xl mb-1">{op.emoji}</div>
-              <div className={`font-display font-bold text-${op.color === 'cyan' ? 'neon-cyan' : op.color === 'lime' ? 'neon-lime' : 'neon-magenta'}`}>
+              <div className="text-2xl sm:text-3xl mb-1">{op.emoji}</div>
+              <div className={`font-display font-bold text-[11px] sm:text-base ${
+                op.color === 'cyan' ? 'text-neon-cyan' :
+                op.color === 'lime' ? 'text-neon-lime' : 'text-neon-magenta'
+              }`}>
                 {op.label}
               </div>
             </motion.button>

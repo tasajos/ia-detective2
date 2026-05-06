@@ -65,7 +65,7 @@ export default function ChatIA() {
   };
 
   return (
-    <div className="px-4 py-6 max-w-3xl mx-auto h-[calc(100vh-100px)] flex flex-col">
+    <div className="px-4 py-4 sm:py-6 max-w-3xl mx-auto h-[calc(100svh-80px)] sm:h-[calc(100svh-100px)] flex flex-col">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4 pb-4 border-b-2 border-bone/10">
         <div className="relative">
@@ -215,12 +215,12 @@ export default function ChatIA() {
           onChange={e => setEntrada(e.target.value)}
           placeholder="Escribe tu pregunta…"
           disabled={cargando}
-          className="flex-1 bg-ink border-2 border-bone/30 focus:border-neon-magenta px-4 py-3 outline-none text-base disabled:opacity-50"
+          className="flex-1 bg-ink border-2 border-bone/30 focus:border-neon-magenta px-3 sm:px-4 py-3 outline-none text-sm sm:text-base disabled:opacity-50 min-w-0"
         />
         <button
           type="submit"
           disabled={cargando || !entrada.trim()}
-          className="btn-brutal btn-brutal-magenta disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+          className="btn-brutal btn-brutal-magenta disabled:opacity-30 disabled:cursor-not-allowed shrink-0 text-xs sm:text-sm px-3 sm:px-4"
         >
           ENVIAR
         </button>
