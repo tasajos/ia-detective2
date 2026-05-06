@@ -32,6 +32,41 @@ export async function probarConexion() {
   }
 }
 
+// ============================================
+// Migracion automatica: agrega columnas nuevas si no existen
+// (asi no necesitas borrar la BD cuando agregamos features)
+// ============================================
+export async function migrarSiEsNecesario() {
+  const verificarColumna = async (tabla, columna) => {
+    const [filas] = await pool.query(
+      `SELECT COUNT(*) AS existe FROM information_schema.columns
+       WHERE table_schema = DATABASE() AND table_name = ? AND column_name = ?`,
+      [tabla, columna]
+    );
+    return filas[0].existe > 0;
+  };
+
+  // Agregar columnas nuevas a conversaciones_chat si no existen
+  const columnasNuevas = [
+    { nombre: 'busquedas_web', tipo: 'INT DEFAULT 0' },
+    { nombre: 'queries_busqueda', tipo: 'TEXT NULL' },
+    { nombre: 'fuentes', tipo: 'TEXT NULL' },
+    { nombre: 'ip_cliente', tipo: 'VARCHAR(45) NULL' },
+    { nombre: 'pais', tipo: 'VARCHAR(60) NULL' },
+    { nombre: 'ciudad', tipo: 'VARCHAR(60) NULL' },
+  ];
+
+  for (const col of columnasNuevas) {
+    const existe = await verificarColumna('conversaciones_chat', col.nombre);
+    if (!existe) {
+      await pool.query(
+        `ALTER TABLE conversaciones_chat ADD COLUMN ${col.nombre} ${col.tipo}`
+      );
+      console.log(`  ✅ Migracion: columna ${col.nombre} agregada`);
+    }
+  }
+}
+
 // Funcion helper para registrar/actualizar a un estudiante
 export async function registrarEstudiante(nombre) {
   if (!nombre || nombre.trim().length === 0) return null;

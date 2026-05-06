@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const sugerenciasIniciales = [
   '¿Cómo funcionas por dentro? 🧠',
-  '¿Puedes equivocarte? Dame un ejemplo',
-  '¿Qué piensas de los humanos?',
+  '¿Qué noticias hay hoy en Bolivia? 🌐',
+  '¿Quién es el alcalde actual de Cochabamba?',
+  '¿Cómo está el clima ahora?',
   'Inventa un chiste sobre el colegio',
-  '¿Qué carrera me recomendarías?',
 ];
 
 export default function ChatIA() {
@@ -46,7 +46,14 @@ export default function ChatIA() {
         }),
       });
       const data = await res.json();
-      setMensajes(prev => [...prev, { rol: 'asistente', texto: data.respuesta }]);
+      setMensajes(prev => [...prev, {
+        rol: 'asistente',
+        texto: data.respuesta,
+        usoInternet: data.uso_internet || false,
+        busquedasWeb: data.busquedasWeb || 0,
+        queriesBusqueda: data.queriesBusqueda || [],
+        fuentesConsultadas: data.fuentesConsultadas || [],
+      }]);
     } catch (e) {
       setMensajes(prev => [...prev, {
         rol: 'asistente',
@@ -68,13 +75,13 @@ export default function ChatIA() {
           <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-neon-lime border-2 border-ink rounded-full animate-pulse" />
         </div>
         <div className="flex-1">
-          <div className="font-display text-lg font-bold">Claude</div>
+          <div className="font-display text-lg font-bold">IA</div>
           <div className="font-mono text-[10px] text-neon-lime flex items-center gap-1">
             <span className="live-dot" /> EN LÍNEA · MODELO REAL
           </div>
         </div>
         <span className="font-mono text-[10px] text-bone/40 hidden sm:block">
-          ANTHROPIC · OPUS 4.5
+          PROCESANDO EN VIVO
         </span>
       </div>
 
@@ -95,7 +102,61 @@ export default function ChatIA() {
                     : 'bg-[#14141c] border-2 border-bone/20 text-bone'
                 }`}
               >
+                {m.usoInternet && (
+                  <div className="flex items-center gap-1.5 mb-2 pb-2 border-b border-bone/10">
+                    <span className="text-neon-cyan text-xs">🌐</span>
+                    <span className="font-mono text-[10px] text-neon-cyan tracking-wider">
+                      BÚSQUEDA EN INTERNET ({m.busquedasWeb})
+                    </span>
+                  </div>
+                )}
                 <div className="text-sm sm:text-base whitespace-pre-wrap leading-relaxed">{m.texto}</div>
+
+                {/* Queries que la IA mando a Google */}
+                {m.queriesBusqueda && m.queriesBusqueda.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-bone/10">
+                    <div className="font-mono text-[10px] text-neon-cyan/80 tracking-wider mb-1.5">
+                      🔍 QUERIES BUSCADAS:
+                    </div>
+                    <div className="space-y-1">
+                      {m.queriesBusqueda.map((q, idx) => (
+                        <div key={idx} className="font-mono text-[11px] text-bone/60">
+                          <span className="text-neon-lime">{idx + 1}.</span> "{q}"
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Fuentes consultadas con links */}
+                {m.fuentesConsultadas && m.fuentesConsultadas.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-bone/10">
+                    <div className="font-mono text-[10px] text-neon-magenta/80 tracking-wider mb-1.5">
+                      📚 FUENTES ({m.fuentesConsultadas.length}):
+                    </div>
+                    <div className="space-y-1.5">
+                      {m.fuentesConsultadas.slice(0, 6).map((f, idx) => (
+                        <a
+                          key={idx}
+                          href={f.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-[11px] hover:bg-bone/5 -mx-1 px-1 py-0.5 transition-colors"
+                        >
+                          <div className="text-neon-cyan font-mono">▸ {f.dominio}</div>
+                          <div className="text-bone/50 text-[10px] truncate ml-3">
+                            {f.titulo}
+                          </div>
+                        </a>
+                      ))}
+                      {m.fuentesConsultadas.length > 6 && (
+                        <div className="text-[10px] text-bone/40 ml-3">
+                          + {m.fuentesConsultadas.length - 6} fuentes más
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -106,10 +167,15 @@ export default function ChatIA() {
               className="flex justify-start"
             >
               <div className="bg-[#14141c] border-2 border-bone/20 px-4 py-3">
-                <div className="flex gap-1">
-                  <span className="w-2 h-2 bg-neon-magenta rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <span className="w-2 h-2 bg-neon-magenta rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <span className="w-2 h-2 bg-neon-magenta rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <span className="w-2 h-2 bg-neon-magenta rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-2 h-2 bg-neon-magenta rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-2 h-2 bg-neon-magenta rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                  <span className="font-mono text-[10px] text-bone/40 ml-1">
+                    pensando · puede estar buscando en internet
+                  </span>
                 </div>
               </div>
             </motion.div>

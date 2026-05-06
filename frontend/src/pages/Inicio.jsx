@@ -24,8 +24,8 @@ const modulos = [
   {
     id: 'chat',
     numero: '03',
-    titulo: 'Chatea con Claude',
-    desc: 'Conversa con una IA real entrenada por Anthropic. Pregúntale lo que quieras.',
+    titulo: 'Chatea con IA',
+    desc: 'Conversa con una IA real. Pregúntale lo que quieras.',
     icono: '💬',
     color: 'magenta',
     duracion: 'libre',
