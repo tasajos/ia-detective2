@@ -30,11 +30,17 @@ export default function Layout() {
       {!esInicio && (
         <header className="relative z-20 border-b-2 border-bone/10 backdrop-blur-md bg-ink/60">
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2 group">
-              <span className="text-2xl group-hover:rotate-12 transition-transform">🔍</span>
+            <Link to="/" className="flex items-center gap-3 group">
+              <img
+                src="/unicen-logo.jpg"
+                alt="UNICEN"
+                className="w-10 h-10 object-contain bg-bone p-0.5 group-hover:scale-105 transition-transform"
+              />
               <div>
                 <div className="font-display font-bold text-sm leading-none">IA DETECTIVE</div>
-                <div className="font-mono text-[10px] text-neon-lime leading-none mt-0.5">SAN AGUSTÍN · 2026</div>
+                <div className="font-mono text-[10px] text-neon-lime leading-none mt-0.5">
+                  UNICEN · SAN AGUSTÍN · 2026
+                </div>
               </div>
             </Link>
 
@@ -62,9 +68,12 @@ export default function Layout() {
       {/* Footer (solo en pantallas grandes) */}
       {!esInicio && (
         <footer className="relative z-10 border-t-2 border-bone/10 mt-12 py-4">
-          <div className="max-w-6xl mx-auto px-4 font-mono text-[10px] text-bone/40 flex justify-between flex-wrap gap-2">
-            <span>IA DETECTIVE / V1.0 · COCHABAMBA, BO</span>
-            <span>POWERED BY CLAUDE · REACT · NODE</span>
+          <div className="max-w-6xl mx-auto px-4 font-mono text-[10px] text-bone/40 flex justify-between flex-wrap gap-2 items-center">
+            <div className="flex items-center gap-2">
+              <img src="/unicen-logo.jpg" alt="UNICEN" className="w-5 h-5 object-contain bg-bone p-0.5" />
+              <span>UNICEN · COMPROMETIDA CON TU FUTURO LABORAL</span>
+            </div>
+            <span>POWERED BY CLAUDE · REACT · NODE · MYSQL</span>
           </div>
         </footer>
       )}

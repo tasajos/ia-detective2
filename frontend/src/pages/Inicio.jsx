@@ -63,14 +63,23 @@ export default function Inicio() {
       {/* Hero */}
       <section className="relative pt-12 pb-20 px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Tag superior */}
+          {/* Logo institucional + tag */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-neon-lime border border-neon-lime/40 px-3 py-1.5 mb-8"
+            className="flex items-center gap-4 mb-8 flex-wrap"
           >
-            <span className="live-dot" />
-            CHARLA EN VIVO · COLEGIO SAN AGUSTÍN · CBBA
+            <div className="flex items-center gap-3 bg-bone p-2 pr-4">
+              <img src="/unicen-logo.jpg" alt="UNICEN" className="w-12 h-12 object-contain" />
+              <div className="font-display">
+                <div className="text-ink font-bold text-sm leading-none">UNICEN</div>
+                <div className="font-mono text-[9px] text-ink/70 mt-0.5">FUTURO LABORAL</div>
+              </div>
+            </div>
+            <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-neon-lime border border-neon-lime/40 px-3 py-1.5">
+              <span className="live-dot" />
+              CHARLA EN VIVO · COLEGIO SAN AGUSTÍN · CBBA
+            </div>
           </motion.div>
 
           {/* Titulo principal */}
@@ -188,9 +197,12 @@ export default function Inicio() {
             transition={{ delay: 1.2 }}
             className="mt-12 pt-8 border-t border-bone/10 flex flex-wrap items-center justify-between gap-4"
           >
-            <div className="font-mono text-xs text-bone/40">
-              <div>HECHO PARA LA CHARLA DE IA · 2026</div>
-              <div className="mt-1">CARRERA DE IA · UNIVERSIDAD CENTRAL</div>
+            <div className="flex items-center gap-3">
+              <img src="/unicen-logo.jpg" alt="UNICEN" className="w-12 h-12 object-contain bg-bone p-1" />
+              <div className="font-mono text-xs text-bone/40">
+                <div>UNIVERSIDAD CENTRAL · UNICEN</div>
+                <div className="mt-1">CARRERA DE IA · CHARLA 2026</div>
+              </div>
             </div>
             <Link
               to="/profesor"

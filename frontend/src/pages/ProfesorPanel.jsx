@@ -92,13 +92,20 @@ export default function ProfesorPanel() {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <div>
-            <div className="font-mono text-[10px] tracking-widest text-neon-cyan mb-1">
-              PANEL DEL PROFESOR · MODO PRESENTACIÓN
+          <div className="flex items-center gap-4">
+            <img
+              src="/unicen-logo.jpg"
+              alt="UNICEN"
+              className="w-14 h-14 object-contain bg-bone p-1"
+            />
+            <div>
+              <div className="font-mono text-[10px] tracking-widest text-neon-cyan mb-1">
+                UNICEN · PANEL DEL PROFESOR · MODO PRESENTACIÓN
+              </div>
+              <h1 className="font-display text-3xl sm:text-4xl font-bold">
+                Sala de <span className="text-neon-cyan">control</span>
+              </h1>
             </div>
-            <h1 className="font-display text-3xl sm:text-4xl font-bold">
-              Sala de <span className="text-neon-cyan">control</span>
-            </h1>
           </div>
           <div className="font-mono text-xs flex items-center gap-3 flex-wrap">
             <span className="text-bone/60">
@@ -201,6 +208,15 @@ function PestaniaInicio({ url, actividad, ranking }) {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* QR */}
       <div className="card-brutal p-6 sm:p-8 text-center" style={{ boxShadow: '8px 8px 0 #00f0ff' }}>
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <img src="/unicen-logo.jpg" alt="UNICEN" className="w-10 h-10 object-contain bg-bone p-0.5" />
+          <div className="text-left">
+            <div className="font-display text-base font-bold leading-none">UNICEN</div>
+            <div className="font-mono text-[9px] text-bone/50 leading-none mt-0.5">
+              IA DETECTIVE · 2026
+            </div>
+          </div>
+        </div>
         <h2 className="font-display text-2xl font-bold mb-2">📱 Únete desde tu celular</h2>
         <p className="text-bone/60 text-sm mb-6">Escanea el QR o entra a la URL</p>
 
